@@ -62,9 +62,9 @@ abstract class InternalScanActivity : AppCompatActivity() {
         internal const val CAMERA_SCREEN_FRAGMENT_TAG = "CameraScreenFragmentTag"
         internal const val IMAGE_CROP_FRAGMENT_TAG = "ImageCropFragmentTag"
         internal const val IMAGE_PROCESSING_FRAGMENT_TAG = "ImageProcessingFragmentTag"
-        internal const val ORIGINAL_IMAGE_NAME = "original"
-        internal val CROPPED_IMAGE_NAME = "IMG_$timeStamp"
-        internal const val TRANSFORMED_IMAGE_NAME = "transformed"
+        internal  val ORIGINAL_IMAGE_NAME = "original"
+//        internal val CROPPED_IMAGE_NAME = "IMG_$timeStamp"
+        internal  val TRANSFORMED_IMAGE_NAME = "transformed"
         internal const val NOT_INITIALIZED = -1L
     }
 
@@ -160,9 +160,13 @@ abstract class InternalScanActivity : AppCompatActivity() {
                     println("InternalScanActivity - transformedImageFile  : " + transformedImageFile)
                     transformedImageFile
                 }
+
+
+
                 croppedImage != null -> {
                     var croppedImageFile: File? = null
                     croppedImage?.let {
+                        val CROPPED_IMAGE_NAME = "IMG_$timeStamp"
                         croppedImageFile =
                             File(filesDir, "${CROPPED_IMAGE_NAME}.${imageType.extension()}")
                         saveBitmap(it, croppedImageFile!!, imageType, imageQuality)
