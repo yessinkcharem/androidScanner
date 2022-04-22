@@ -93,7 +93,7 @@ abstract class InternalScanActivity : AppCompatActivity() {
         originalImageFile = File(filesDir, "${ORIGINAL_IMAGE_NAME}.${imageType.extension()}")
 //        originalImageFile.delete()
     }
-    //delete
+    //finalScannerResult
 
     private fun showCameraScreen() {
         println("showCameraScreen : internalScanActivity")
@@ -145,6 +145,8 @@ abstract class InternalScanActivity : AppCompatActivity() {
                     transformedImage?.let {
                         transformedImageFile = File(filesDir, "${TRANSFORMED_IMAGE_NAME}.${imageType.extension()}")
                         saveBitmap(it, transformedImageFile!!, imageType, imageQuality)
+
+
                     }
                     transformedImageFile = transformedImageFile?.let {
                         Compressor.compress(this@InternalScanActivity, it) {
@@ -152,7 +154,10 @@ abstract class InternalScanActivity : AppCompatActivity() {
                             if (imageSize != NOT_INITIALIZED) size(imageSize)
                             format(imageType)
                         }
+
+
                     }
+                    println("InternalScanActivity - transformedImageFile  : " + transformedImageFile)
                     transformedImageFile
                 }
                 croppedImage != null -> {
@@ -169,6 +174,7 @@ abstract class InternalScanActivity : AppCompatActivity() {
                             format(imageType)
                         }
                     }
+                    println("InternalScanActivity - croppedImageFile  : " + croppedImageFile)
                     croppedImageFile
                 }
                 else -> {
@@ -178,6 +184,7 @@ abstract class InternalScanActivity : AppCompatActivity() {
                             if (imageSize != NOT_INITIALIZED) size(imageSize)
                             format(imageType)
                         }
+                    println("InternalScanActivity - originalImageFile  : " + originalImageFile)
                     originalImageFile
                 }
             }
@@ -189,6 +196,7 @@ abstract class InternalScanActivity : AppCompatActivity() {
                 //shouldCallOnClose = false
                 //supportFragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                 //shouldCallOnClose = true
+                println("InternalScanActivity - scannerResults  : " + scannerResults)
                 onSuccess(scannerResults)
                 Log.d(TAG, "ZDCcompress ends ${System.currentTimeMillis()}")
             }
