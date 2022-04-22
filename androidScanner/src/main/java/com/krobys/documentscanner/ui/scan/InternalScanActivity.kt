@@ -57,7 +57,8 @@ abstract class InternalScanActivity : AppCompatActivity() {
     abstract fun onClose()
 
     companion object {
-        var timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+
+
         private val TAG = InternalScanActivity::class.simpleName
         internal const val CAMERA_SCREEN_FRAGMENT_TAG = "CameraScreenFragmentTag"
         internal const val IMAGE_CROP_FRAGMENT_TAG = "ImageCropFragmentTag"
@@ -166,6 +167,7 @@ abstract class InternalScanActivity : AppCompatActivity() {
                 croppedImage != null -> {
                     var croppedImageFile: File? = null
                     croppedImage?.let {
+                        var timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
                         val CROPPED_IMAGE_NAME = "IMG_$timeStamp"
                         croppedImageFile =
                             File(filesDir, "${CROPPED_IMAGE_NAME}.${imageType.extension()}")
