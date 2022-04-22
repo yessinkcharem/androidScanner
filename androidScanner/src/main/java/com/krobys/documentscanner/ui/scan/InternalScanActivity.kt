@@ -95,16 +95,19 @@ abstract class InternalScanActivity : AppCompatActivity() {
     }
 
     private fun showCameraScreen() {
+        println("showCameraScreen : internalScanActivity")
         val cameraScreenFragment = CameraScreenFragment.newInstance()
         addFragmentToBackStack(cameraScreenFragment, CAMERA_SCREEN_FRAGMENT_TAG)
     }
 
     internal fun showImageCropFragment() {
+        println("showImageCropFragment : internalScanActivity")
         val imageCropFragment = ImageCropFragment.newInstance()
         addFragmentToBackStack(imageCropFragment, IMAGE_CROP_FRAGMENT_TAG)
     }
 
     internal fun showImageProcessingFragment() {
+        println("showImageProcessingFragment : internalScanActivity")
         val imageProcessingFragment = ImageProcessingFragment.newInstance()
         addFragmentToBackStack(imageProcessingFragment, IMAGE_PROCESSING_FRAGMENT_TAG)
     }
@@ -115,6 +118,7 @@ abstract class InternalScanActivity : AppCompatActivity() {
     }
 
     private fun addFragmentToBackStack(fragment: Fragment, fragmentTag: String) {
+        println("addFragmentToBackStack : internalScanActivity")
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.zdcContent, fragment, fragmentTag)
         if (supportFragmentManager.findFragmentByTag(fragmentTag) == null) {
@@ -124,10 +128,12 @@ abstract class InternalScanActivity : AppCompatActivity() {
     }
 
     internal fun finalScannerResult() {
+        println("finalScannerResult : internalScanActivity")
         compressFiles()
     }
 
     private fun compressFiles() {
+        println("compressFiles : internalScanActivity")
         Log.d(TAG, "ZDCcompress starts ${System.currentTimeMillis()}")
         findViewById<ProgressView>(R.id.zdcProgressView).show()
         GlobalScope.launch(Dispatchers.IO) {
@@ -189,6 +195,8 @@ abstract class InternalScanActivity : AppCompatActivity() {
     }
 
     internal fun addFragmentContentLayoutInternal() {
+        println("addFragmentContentLayoutInternal : internalScanActivity")
+
         val frameLayout = FrameLayout(this)
         frameLayout.id = R.id.zdcContent
         addContentView(
