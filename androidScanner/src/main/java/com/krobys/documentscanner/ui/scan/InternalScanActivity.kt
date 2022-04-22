@@ -47,6 +47,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
 
 abstract class InternalScanActivity : AppCompatActivity() {
 
@@ -55,15 +57,18 @@ abstract class InternalScanActivity : AppCompatActivity() {
     abstract fun onClose()
 
     companion object {
+        var timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         private val TAG = InternalScanActivity::class.simpleName
         internal const val CAMERA_SCREEN_FRAGMENT_TAG = "CameraScreenFragmentTag"
         internal const val IMAGE_CROP_FRAGMENT_TAG = "ImageCropFragmentTag"
         internal const val IMAGE_PROCESSING_FRAGMENT_TAG = "ImageProcessingFragmentTag"
         internal const val ORIGINAL_IMAGE_NAME = "original"
-        internal const val CROPPED_IMAGE_NAME = "cropped"
+        internal val CROPPED_IMAGE_NAME = "IMG_$timeStamp"
         internal const val TRANSFORMED_IMAGE_NAME = "transformed"
         internal const val NOT_INITIALIZED = -1L
     }
+
+    //File
 
     internal lateinit var originalImageFile: File
     internal var croppedImage: Bitmap? = null
@@ -75,6 +80,7 @@ abstract class InternalScanActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        println("onCreate : internalScanActivity")
         val sessionManager = SessionManager(this)
         imageType = sessionManager.getImageType()
         imageSize = sessionManager.getImageSize()
@@ -83,6 +89,7 @@ abstract class InternalScanActivity : AppCompatActivity() {
     }
 
     internal fun reInitOriginalImageFile() {
+        println("reInitOriginalImageFile")
         originalImageFile = File(filesDir, "${ORIGINAL_IMAGE_NAME}.${imageType.extension()}")
         originalImageFile.delete()
     }
@@ -103,6 +110,7 @@ abstract class InternalScanActivity : AppCompatActivity() {
     }
 
     internal fun closeCurrentFragment() {
+        println("closeCurrentFragment : internalScanActivity")
         supportFragmentManager.popBackStackImmediate()
     }
 
@@ -204,3 +212,4 @@ abstract class InternalScanActivity : AppCompatActivity() {
         showCameraScreen()
     }
 }
+//delete

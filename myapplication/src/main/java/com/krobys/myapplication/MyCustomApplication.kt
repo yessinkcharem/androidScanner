@@ -7,6 +7,7 @@ import com.krobys.documentscanner.ui.DocumentScanner
 class MyCustomApplication: Application() {
     override fun onCreate() {
         super.onCreate()
+        println("onCreate : MyCustomApplication")
 
         val configuration = DocumentScanner.Configuration()
         configuration.imageQuality = 200
@@ -14,4 +15,6 @@ class MyCustomApplication: Application() {
         configuration.imageType = Bitmap.CompressFormat.JPEG
         DocumentScanner.init(this, configuration) // or simply DocumentScanner.init(this)
     }
+
+
 }
