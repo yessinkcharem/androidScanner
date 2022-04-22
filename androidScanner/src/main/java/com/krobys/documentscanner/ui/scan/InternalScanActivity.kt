@@ -91,8 +91,9 @@ abstract class InternalScanActivity : AppCompatActivity() {
     internal fun reInitOriginalImageFile() {
         println("reInitOriginalImageFile")
         originalImageFile = File(filesDir, "${ORIGINAL_IMAGE_NAME}.${imageType.extension()}")
-        originalImageFile.delete()
+//        originalImageFile.delete()
     }
+    //delete
 
     private fun showCameraScreen() {
         println("showCameraScreen : internalScanActivity")

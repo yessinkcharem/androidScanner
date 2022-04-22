@@ -27,3 +27,6 @@ abstract class ScanActivity : InternalScanActivity() {
         addFragmentContentLayoutInternal()
     }
 }
+
+
+//delete
