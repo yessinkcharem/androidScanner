@@ -50,7 +50,7 @@ internal class SessionManager(context: Context) {
     }
 
     fun getImageQuality(): Int {
-        return preferences.getInt(IMAGE_QUALITY_KEY, 500)
+        return preferences.getInt(IMAGE_QUALITY_KEY, 100)
     }
     //image_quality
 
