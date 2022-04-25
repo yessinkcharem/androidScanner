@@ -120,3 +120,5 @@ internal class SessionManager(context: Context) {
         preferences.edit().putBoolean(IS_MAGIC_BUTTON_ENABLED, enabled).apply()
     }
 }
+
+//bitmap

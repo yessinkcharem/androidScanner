@@ -74,7 +74,7 @@ abstract class InternalScanActivity : AppCompatActivity() {
     internal lateinit var originalImageFile: File
     internal var croppedImage: Bitmap? = null
     internal var transformedImage: Bitmap? = null
-    private var imageQuality: Int = 100
+    private var imageQuality: Int = 500
     private var imageSize: Long = NOT_INITIALIZED
     private lateinit var imageType: Bitmap.CompressFormat
     internal var shouldCallOnClose = true
