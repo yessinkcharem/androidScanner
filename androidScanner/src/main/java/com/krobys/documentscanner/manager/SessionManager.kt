@@ -121,4 +121,4 @@ internal class SessionManager(context: Context) {
     }
 }
 
-//bitmap
+

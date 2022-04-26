@@ -68,7 +68,14 @@ internal class ImageCropFragment : BaseFragment() {
         val fileToDecode = File(getScanActivity().originalImageFile.absolutePath)
         val bitmapOptions = BitmapFactory.Options()
         bitmapOptions.inPreferredConfig = Bitmap.Config.ARGB_8888
-        bitmapOptions.inSampleSize = 4
+
+        try {
+            val quality = this.requireArguments().getInt("quality", 1)
+            bitmapOptions.inSampleSize = quality
+        } catch (var5: Exception) {
+            bitmapOptions.inSampleSize = 1
+        }
+//        bitmapOptions.inSampleSize = this.requireArguments().getInt("quality", 1)
         val sourceBitmap = BitmapFactory.decodeStream(FileInputStream(fileToDecode), null, bitmapOptions)//long operation, time depends on bitmapOptions.inSampleSize
 
         if (sourceBitmap != null) {
