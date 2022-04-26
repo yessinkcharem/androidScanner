@@ -185,10 +185,13 @@ internal class CameraScreenFragment: BaseFragment(), ScanSurfaceListener  {
     }
 
     private fun selectImageFromGallery() {
-        val photoPickerIntent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+//        val photoPickerIntent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+        val photoPickerIntent = Intent(Intent.ACTION_GET_CONTENT)
+
         photoPickerIntent.addCategory(Intent.CATEGORY_OPENABLE)
         photoPickerIntent.type = "image/*"
-        startActivityForResult(photoPickerIntent, GALLERY_REQUEST_CODE)
+//        startActivityForResult(photoPickerIntent, GALLERY_REQUEST_CODE)
+        startActivityForResult(Intent.createChooser(photoPickerIntent, "Select Picture"), 1)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
