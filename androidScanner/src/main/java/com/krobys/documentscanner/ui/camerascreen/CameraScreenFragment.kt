@@ -196,7 +196,8 @@ internal class CameraScreenFragment: BaseFragment(), ScanSurfaceListener  {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == GALLERY_REQUEST_CODE) {
+//        if (resultCode == Activity.RESULT_OK && requestCode == GALLERY_REQUEST_CODE) {
+        if (resultCode == Activity.RESULT_OK && requestCode == 1) {
             try {
                 val imageUri = data?.data
                 if (imageUri != null) {
